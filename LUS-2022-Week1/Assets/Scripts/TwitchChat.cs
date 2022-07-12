@@ -2,6 +2,8 @@ using UnityEngine;
 using System.IO;
 using System.Net.Sockets;
 
+// https://www.raywenderlich.com/24373608-how-to-create-a-twitch-chat-game-with-unity
+
 public class TwitchChat : MonoBehaviour
 {
     public string username;
