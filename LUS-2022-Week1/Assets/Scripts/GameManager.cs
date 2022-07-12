@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] RawImage image;
 
     PhotonView view;
-
-	ScreenshotHelper screenshotHelper = new ScreenshotHelper();
+	ScreenshotHelper screenshotHelper;
 
     void Awake() {
         view = PhotonView.Get(this);
+		screenshotHelper = GetComponent<ScreenshotHelper>();
     }
 
     void Update() {
@@ -26,7 +26,13 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator TakeScreenshot()
     {
-        yield return StartCoroutine(screenshotHelper.TakeScreenshot(Application.dataPath + "/CameraScreenshot.png", false));
+        screenshotHelper.TakeScreenshotWithoutUI();
+
+		while (!screenshotHelper.finished)
+		{
+			yield return null;
+		}
+
 		image.texture = screenshotHelper.screenshotTexture;
 	}
 
