@@ -76,6 +76,8 @@ public class MousePickup : MonoBehaviour
     void OnMouseDrag()
     {
         transform.position = GetMouseAsWorldPoint() + mOffset;
+
+        transform.Rotate(0, Input.mouseScrollDelta.y * 20, 0);
     }
 
 
