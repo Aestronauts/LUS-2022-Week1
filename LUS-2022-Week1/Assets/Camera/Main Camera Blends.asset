@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Main Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: Origin_vcam
-    m_To: SlowZoom_vcam
+  - m_From: 00_Origin
+    m_To: 01_SlowZoom
     m_Blend:
       m_Style: 1
       m_Time: 6
@@ -24,7 +24,18 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Origin_vcam
+  - m_From: 01_SlowZoom
+    m_To: 00_Origin
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: 00_Origin
     m_To: 02_SlowZoomOut
     m_Blend:
       m_Style: 1
@@ -35,11 +46,33 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Origin_vcam
+  - m_From: 00_Origin
     m_To: 03_FOVQuickZoom
     m_Blend:
+      m_Style: 5
+      m_Time: 0.3
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: 03_FOVQuickZoom
+    m_To: 00_Origin
+    m_Blend:
       m_Style: 0
-      m_Time: 0.2
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: 02_SlowZoomOut
+    m_To: 00_Origin
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

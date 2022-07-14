@@ -1,13 +1,13 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine; 
 
 public class CameraController : MonoBehaviour
 {
     // Start is called before the first frame update
     public static CameraController Instance { get; private set; }
-    
+
     private CinemachineVirtualCamera _originVCAM;
     private CinemachineVirtualCamera _SlowZoomVCAM;
     private CinemachineVirtualCamera _SlowZoomOutVCAM;
@@ -15,17 +15,20 @@ public class CameraController : MonoBehaviour
 
     CinemachineBasicMultiChannelPerlin _vcamNoise;
 
+    Coroutine _cameraLoop;
+
     [SerializeField]
     bool _isCameraShake, _isSlowZoom, _isSlowZoomOut, _isFOVquickZoom;
+    bool loopStarted = false;
 
     void Awake()
     {
         Instance = this;
-        
+
         List<Transform> childObjects = new List<Transform>();
-        for(int i = 0; i<transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            childObjects.Add(transform.GetChild(i));    
+            childObjects.Add(transform.GetChild(i));
         }
 
         _originVCAM = childObjects[0].GetComponent<CinemachineVirtualCamera>();
@@ -54,7 +57,7 @@ public class CameraController : MonoBehaviour
 
     public void CameraShake(float amplitude, float frequency)
     {
-       if(_isCameraShake == true)
+        if (_isCameraShake == true)
         {
             _vcamNoise.m_AmplitudeGain = amplitude;
             _vcamNoise.m_FrequencyGain = frequency;
@@ -65,7 +68,7 @@ public class CameraController : MonoBehaviour
             _vcamNoise.m_FrequencyGain = 0;
         }
     }
-       
+
     public void SlowZoom()
     {
         TogglePriorty_VCAM(_isSlowZoom, _SlowZoomVCAM);
@@ -73,7 +76,7 @@ public class CameraController : MonoBehaviour
 
     public void SlowZoomOut()
     {
-        TogglePriorty_VCAM(_isSlowZoomOut, _SlowZoomOutVCAM);   
+        TogglePriorty_VCAM(_isSlowZoomOut, _SlowZoomOutVCAM);     
     }
 
     public void FOVQuickZoom()
@@ -83,11 +86,28 @@ public class CameraController : MonoBehaviour
 
     public void TogglePriorty_VCAM(bool isActive, CinemachineVirtualCamera vcam)
     {
-        if (isActive == true)
-            vcam.Priority = 11;
-        else
-            vcam.Priority = 9;
-    }
 
-    
+        if (isActive == true)
+        {
+            vcam.Priority = 11;
+
+            if(loopStarted == false)
+            {
+                _cameraLoop = StartCoroutine(LoopCameraFX());
+            }    
+        }
+        else
+        {
+            vcam.Priority = 9;
+        }      
+    }
+    IEnumerator LoopCameraFX()
+    {
+        loopStarted = true;
+        yield return new WaitForSeconds(6);
+        _originVCAM.Priority = 12;
+        yield return new WaitForSeconds(1);
+        _originVCAM.Priority = 10;
+        loopStarted = false;  
+    }
 }
