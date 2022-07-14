@@ -5,51 +5,65 @@ using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MenuManager : MonoBehaviourPunCallbacks {
-	[SerializeField] TMP_InputField joinField; 
-	[SerializeField] TextMeshProUGUI createLabel; 
-	[SerializeField] Button playButton;
+	[SerializeField] TwitchChat twitch;
 
-	bool canInteract = false;
+	[SerializeField] TMP_InputField nameField; 
+	[SerializeField] TMP_InputField joinField; 
+	[SerializeField] TMP_InputField TwitchChannelField; 
+	[SerializeField] TMP_InputField TwitchAuthTokenField; 
+
+	[SerializeField] GameObject TitleMenu;
+	[SerializeField] GameObject LobbyMenu;
+	[SerializeField] GameObject ConnectingAlert;
+
+	[SerializeField] GameObject TemplateUser;
+	[SerializeField] GameObject UserScrollWindow;
+
+	[SerializeField] TextMeshProUGUI RoomLabel;
+
+	List<Player> Players = new List<Player>();
+	List<GameObject> PlayerEntries = new List<GameObject>();
 
 	void Awake() {
+		TitleMenu.SetActive(false);
+		LobbyMenu.SetActive(false);
+		ConnectingAlert.SetActive(true);
 		PhotonNetwork.ConnectUsingSettings();
 	}
 
 	public void JoinButton() {
-		if (!canInteract) {
-			createLabel.text = "Not connected";
-			return;
-		}
-
 		string roomName = joinField.text;
-		createLabel.text = roomName;
-
+		RoomLabel.text = roomName;
+		PhotonNetwork.LocalPlayer.NickName = nameField.text;
 		JoinRoom(roomName);
 	}
 
 	public void CreateButton() {
-		if (!canInteract) {
-			createLabel.text = "Not connected";
-			return;
-		}
-
 		int length = 5;
 	    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	    string roomName = new string(Enumerable.Repeat(chars, length)
 			.Select(s => s[Random.Range(0, s.Length)]).ToArray());
 
-		createLabel.text = roomName;
-		GUIUtility.systemCopyBuffer = roomName;
+		RoomLabel.text = roomName;
+		PhotonNetwork.LocalPlayer.NickName = nameField.text;
 
+		GUIUtility.systemCopyBuffer = roomName;
 		CreateRoom(roomName);
 	}
 
 	public void PlayButton() {
-		print("play button");
 		PhotonView photonView = PhotonView.Get(this);
 		photonView.RPC("PlayForAll", RpcTarget.All);
+	}
+
+	public void SubmitButton() {
+		twitch.username = TwitchChannelField.text;
+		twitch.channelName = TwitchChannelField.text;
+		twitch.password = TwitchAuthTokenField.text;
+		twitch.Connect();
 	}
 
 	[PunRPC]
@@ -57,9 +71,25 @@ public class MenuManager : MonoBehaviourPunCallbacks {
 		SceneManager.LoadScene("Main");
 	}
 
-	#region NETWORKING
+	void ReloadLobbyEntries()
+	{
+		foreach (GameObject go in PlayerEntries)
+		{
+			Destroy(go);
+		}
 
-	// TODO: JoinRandom?
+		PlayerEntries.Clear();
+
+		foreach (Player player in PhotonNetwork.PlayerList)
+		{
+			GameObject playerEntry = Instantiate(TemplateUser, UserScrollWindow.transform);
+			playerEntry.GetComponent<TextMeshProUGUI>().text = player.NickName;
+			playerEntry.SetActive(true);
+			PlayerEntries.Add(playerEntry);
+		}
+	}
+
+	#region PUN CALLBACKS
 
 	void JoinRoom(string roomName) {
 		PhotonNetwork.JoinRoom(roomName);
@@ -70,12 +100,19 @@ public class MenuManager : MonoBehaviourPunCallbacks {
 	}
 
 	public override void OnConnectedToMaster() {
-		print("Conneced to master");
-		canInteract = true;
+		ConnectingAlert.SetActive(false);
+		TitleMenu.SetActive(true);
+	}
+
+	public override void OnJoinedRoom() {
+		TitleMenu.SetActive(false);
+		LobbyMenu.SetActive(true);
+
+		ReloadLobbyEntries();
 	}
 
 	public override void OnPlayerEnteredRoom(Player other) {
-		print("joined");
+		ReloadLobbyEntries();
 	}
 
 	#endregion

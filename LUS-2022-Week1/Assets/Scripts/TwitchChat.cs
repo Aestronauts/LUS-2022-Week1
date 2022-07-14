@@ -14,10 +14,9 @@ public class TwitchChat : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
     private float reconnectTimer;
-    private float reconnectAfter;
+    private float reconnectAfter = 60.0f;
 
     void Start() {
-        reconnectAfter = 60.0f;
         Connect();
     }
 
@@ -36,7 +35,7 @@ public class TwitchChat : MonoBehaviour
         ReadChat();
     }
 
-    void Connect()
+    public void Connect()
     {
         twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
         reader = new StreamReader(twitchClient.GetStream());
