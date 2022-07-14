@@ -23,7 +23,7 @@ public class ObjectManipulation : MonoBehaviour
     // gizmo transform
     public Transform transGizmo;
 
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class ObjectManipulation : MonoBehaviour
     private void Update()
     {
         // when mouse left click
-        if (Input.GetMouseButtonDown(0) && mouseIsOver)
+        if (Input.GetMouseButtonDown(0))
         {
             ObjInteraction(mouseIsOver);
         }//end mouse left click
@@ -70,16 +70,18 @@ public class ObjectManipulation : MonoBehaviour
             //change gizmo
             transGizmo.gameObject.SetActive(true);
             transGizmo.position = transform.GetComponent<Renderer>().bounds.center;
+            transGizmo.parent = transform;
         }
         else // otherwise of we moused off or unclicked
         {
             //turn off/on selected
             objIsSelected = false;
             //turn off/on collider
-            transform.GetComponent<BoxCollider2D>().enabled = true;
+            transform.GetComponent<BoxCollider>().enabled = true;
             //change gizmo
             transGizmo.gameObject.SetActive(false);
             //transGizmo.position = transform.GetComponent<Renderer>().bounds.center;
+            transGizmo.parent = null;
         }//end of mouse exited
         
         
