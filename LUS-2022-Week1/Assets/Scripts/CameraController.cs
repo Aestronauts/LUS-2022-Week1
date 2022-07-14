@@ -10,10 +10,13 @@ public class CameraController : MonoBehaviour
     
     private CinemachineVirtualCamera _originVCAM;
     private CinemachineVirtualCamera _SlowZoomVCAM;
+    private CinemachineVirtualCamera _SlowZoomOutVCAM;
+    private CinemachineVirtualCamera _fovQuickZoomVCAM;
+
     CinemachineBasicMultiChannelPerlin _vcamNoise;
 
     [SerializeField]
-    bool _isCameraShake, _isSlowZoom;
+    bool _isCameraShake, _isSlowZoom, _isSlowZoomOut, _isFOVquickZoom;
 
     void Awake()
     {
@@ -31,6 +34,12 @@ public class CameraController : MonoBehaviour
         _SlowZoomVCAM = childObjects[1].GetComponent<CinemachineVirtualCamera>();
         if (_SlowZoomVCAM == null) Debug.Log("Slow Zoom NULL");
 
+        _SlowZoomOutVCAM = childObjects[2].GetComponent<CinemachineVirtualCamera>();
+        if (_SlowZoomOutVCAM == null) Debug.Log("Slow Zoom Out NULL");
+
+        _fovQuickZoomVCAM = childObjects[3].GetComponent<CinemachineVirtualCamera>();
+        if (_fovQuickZoomVCAM == null) Debug.Log("FOV Quick Zoom Null");
+
         _vcamNoise = _originVCAM.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
@@ -39,7 +48,8 @@ public class CameraController : MonoBehaviour
     {
         CameraShake(5f, 5f);
         SlowZoom();
-      
+        SlowZoomOut();
+        FOVQuickZoom();
     }
 
     public void CameraShake(float amplitude, float frequency)
@@ -58,10 +68,25 @@ public class CameraController : MonoBehaviour
        
     public void SlowZoom()
     {
-        if (_isSlowZoom == true)
-            _SlowZoomVCAM.Priority = 11;
+        TogglePriorty_VCAM(_isSlowZoom, _SlowZoomVCAM);
+    }
+
+    public void SlowZoomOut()
+    {
+        TogglePriorty_VCAM(_isSlowZoomOut, _SlowZoomOutVCAM);   
+    }
+
+    public void FOVQuickZoom()
+    {
+        TogglePriorty_VCAM(_isFOVquickZoom, _fovQuickZoomVCAM);
+    }
+
+    public void TogglePriorty_VCAM(bool isActive, CinemachineVirtualCamera vcam)
+    {
+        if (isActive == true)
+            vcam.Priority = 11;
         else
-            _SlowZoomVCAM.Priority = 9;
+            vcam.Priority = 9;
     }
 
     

@@ -17,7 +17,29 @@ MonoBehaviour:
     m_To: SlowZoom_vcam
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 6
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: Origin_vcam
+    m_To: 02_SlowZoomOut
+    m_Blend:
+      m_Style: 1
+      m_Time: 6
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: Origin_vcam
+    m_To: 03_FOVQuickZoom
+    m_Blend:
+      m_Style: 0
+      m_Time: 0.2
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
