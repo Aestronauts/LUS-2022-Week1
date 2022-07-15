@@ -6,6 +6,8 @@
 				<SoundBank Name="New_SoundBank" ID="{F2B2BBE9-9689-4C6A-9246-5DF1CDACF903}">
 					<ObjectInclusionList>
 						<ObjectRef Name="AuctionMus_Play" ID="{229F5043-6C47-4C94-AB66-BB598F261DD1}" WorkUnitID="{70065D61-2115-4361-B3F1-8CA02F006BA0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DramaticMus_Play" ID="{F5BF68FF-1E7A-4CBA-89E6-52302C0F0EEA}" WorkUnitID="{70065D61-2115-4361-B3F1-8CA02F006BA0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SynthMuc_Play" ID="{04EA03BB-D71A-4E23-B255-CBD1869BE58B}" WorkUnitID="{70065D61-2115-4361-B3F1-8CA02F006BA0}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

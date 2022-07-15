@@ -14,6 +14,38 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stop_All" ID="{FB351C03-6B9F-4BCC-AB74-30CBA4D0D680}">
+					<ChildrenList>
+						<Action Name="" ID="{67DD1708-47A2-464E-B051-F7E6BD1665E6}" ShortID="364860086">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DramaticMus_Play" ID="{F5BF68FF-1E7A-4CBA-89E6-52302C0F0EEA}">
+					<ChildrenList>
+						<Action Name="" ID="{02C9F6A0-84C4-457D-A6A4-A78062F7C4CC}" ShortID="423032972">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dramatic_Music" ID="{A4DFF40E-E482-4B3C-9D51-CDC101CF288A}" WorkUnitID="{3455E5BE-0F11-4080-8F86-093A580A86DD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SynthMuc_Play" ID="{04EA03BB-D71A-4E23-B255-CBD1869BE58B}">
+					<ChildrenList>
+						<Action Name="" ID="{77186D67-8959-41E9-92AD-2614E699B818}" ShortID="346181066">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Synth_Music" ID="{A9C65AA3-DA5F-4B4A-B98D-976B222F49C0}" WorkUnitID="{3455E5BE-0F11-4080-8F86-093A580A86DD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AUCTIONMUS_PLAY = 2227123394U;
+        static const AkUniqueID DRAMATICMUS_PLAY = 2255144896U;
+        static const AkUniqueID SYNTHMUC_PLAY = 3887398435U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS

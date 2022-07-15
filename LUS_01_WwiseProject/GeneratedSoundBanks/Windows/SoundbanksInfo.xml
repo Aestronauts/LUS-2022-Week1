@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="1976663978">
+		<SoundBank Id="4072029455" Language="SFX" Hash="3646791072">
 			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
@@ -26,6 +26,22 @@
 						<File Id="292953494" Language="SFX">
 							<ShortName>LevelUpState_1_Auction_M-St.wav</ShortName>
 							<Path>SFX\LevelUpState_1_Auction_M-St_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2255144896" Name="DramaticMus_Play" ObjectPath="\Events\Default Work Unit\DramaticMus_Play" DurationType="OneShot" DurationMin="20.153458" DurationMax="20.153458">
+					<IncludedMemoryFiles>
+						<File Id="666085194" Language="SFX">
+							<ShortName>LevelUpState_1_Dramatic_M-St.wav</ShortName>
+							<Path>SFX\LevelUpState_1_Dramatic_M-St_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3887398435" Name="SynthMuc_Play" ObjectPath="\Events\Default Work Unit\SynthMuc_Play" DurationType="OneShot" DurationMin="18.752062" DurationMax="18.752062">
+					<IncludedMemoryFiles>
+						<File Id="956127689" Language="SFX">
+							<ShortName>LevelUpState_1_Synthetic_M-St.wav</ShortName>
+							<Path>SFX\LevelUpState_1_Synthetic_M-St_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

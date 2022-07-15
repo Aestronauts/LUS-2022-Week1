@@ -1,6 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	2227123394	AuctionMus_Play			\Default Work Unit\AuctionMus_Play	
+	2255144896	DramaticMus_Play			\Default Work Unit\DramaticMus_Play	
+	3887398435	SynthMuc_Play			\Default Work Unit\SynthMuc_Play	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	292953494	Auction_Music	D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\.cache\Windows\SFX\LevelUpState_1_Auction_M-St_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Auction_Music		3600460
+	666085194	Dramatic_Music	D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\.cache\Windows\SFX\LevelUpState_1_Dramatic_M-St_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dramatic_Music		3869528
+	956127689	Synth_Music	D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\.cache\Windows\SFX\LevelUpState_1_Synthetic_M-St_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Synth_Music		3600460
 

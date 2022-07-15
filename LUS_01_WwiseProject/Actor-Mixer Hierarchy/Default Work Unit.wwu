@@ -26,6 +26,52 @@
 						<ActiveSource Name="LevelUpState_1_Auction_M-St" ID="{19C64227-9FDA-47EE-B004-338DE88E8607}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Dramatic_Music" ID="{A4DFF40E-E482-4B3C-9D51-CDC101CF288A}" ShortID="912122214">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC1400BA-D551-405A-A6C5-D0C3ADCC2C60}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5F03BCD9-21ED-4F23-A4AC-20E83AB7E2C9}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="LevelUpState_1_Dramatic_M-St" ID="{81ED5F19-2C20-449A-B5C6-F9ECBFDD2920}">
+							<Language>SFX</Language>
+							<AudioFile>LevelUpState_1_Dramatic_M-St.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="666085194"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="LevelUpState_1_Dramatic_M-St" ID="{81ED5F19-2C20-449A-B5C6-F9ECBFDD2920}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Synth_Music" ID="{A9C65AA3-DA5F-4B4A-B98D-976B222F49C0}" ShortID="252141463">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC1400BA-D551-405A-A6C5-D0C3ADCC2C60}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5F03BCD9-21ED-4F23-A4AC-20E83AB7E2C9}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="LevelUpState_1_Synthetic_M-St" ID="{AD57CA72-5A5B-4B99-9083-CF991E4CA8BC}">
+							<Language>SFX</Language>
+							<AudioFile>LevelUpState_1_Synthetic_M-St.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="956127689"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="LevelUpState_1_Synthetic_M-St" ID="{AD57CA72-5A5B-4B99-9083-CF991E4CA8BC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

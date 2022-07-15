@@ -4,6 +4,10 @@
 		<UserProjectSettings Name="" ID="{FD3DE1BC-52BB-48EF-B16B-1C19D2B241E4}">
 			<PropertyList>
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="D:\Game Projects\Aestronauts\Jams\LevelUpState_PTSession\Bounced Files\"/>
+				<Property Name="Event Action List\{04EA03BB-D71A-4E23-B255-CBD1869BE58B}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{229F5043-6C47-4C94-AB66-BB598F261DD1}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{F5BF68FF-1E7A-4CBA-89E6-52302C0F0EEA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{FB351C03-6B9F-4BCC-AB74-30CBA4D0D680}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
