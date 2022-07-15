@@ -50,10 +50,33 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         CameraShake(5f, 5f);
+        CameraBlendHandeler(); 
+    }
 
+    public void SetSlowZoom_VCAM(bool isActive)
+    {
+        _isSlowZoom = isActive;
+    }
+    public void SetSlowZoomOut_VCAM(bool isActive)
+    {
+        _isSlowZoomOut = isActive;
+    }
+
+    public void SetFOVQuickZoom_VCAM(bool isActive)
+    {
+        _isFOVquickZoom = isActive;
+    }
+
+    public void SetCameraShake_VCAM(bool isActive)
+    {
+        _isCameraShake = isActive;
+    }
+
+    void CameraBlendHandeler()
+    {
         if (_isSlowZoom)
         {
-            _SlowZoomVCAM.Priority = 11;
+           _SlowZoomVCAM.Priority = 11;
             StartLoop();
         }
         else if (!_isSlowZoomOut && !_isFOVquickZoom)
@@ -70,7 +93,7 @@ public class CameraController : MonoBehaviour
         else if (!_isSlowZoom && !_isFOVquickZoom)
         {
             ResetCamera();
-            _SlowZoomOutVCAM.Priority= 9;
+            _SlowZoomOutVCAM.Priority = 9;
         }
 
         if (_isFOVquickZoom)
@@ -82,9 +105,8 @@ public class CameraController : MonoBehaviour
         {
             _fovQuickZoomVCAM.Priority = 9;
             ResetCamera();
-        } 
+        }
     }
-
     public void CameraShake(float amplitude, float frequency)
     {
         if (_isCameraShake == true)
