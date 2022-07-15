@@ -523,6 +523,7 @@ MonoBehaviour:
   _isSlowZoom: 0
   _isSlowZoomOut: 0
   _isFOVquickZoom: 0
+  loopStarted: 0
 --- !u!1 &446274946
 GameObject:
   m_ObjectHideFlags: 0

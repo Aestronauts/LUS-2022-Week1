@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     bool _isCameraShake, _isSlowZoom, _isSlowZoomOut, _isFOVquickZoom;
-    bool loopStarted = false;
+    public bool loopStarted = false;
 
     void Awake()
     {
@@ -50,9 +50,39 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         CameraShake(5f, 5f);
-        SlowZoom();
-        SlowZoomOut();
-        FOVQuickZoom();
+
+        if (_isSlowZoom)
+        {
+            _SlowZoomVCAM.Priority = 11;
+            StartLoop();
+        }
+        else if (!_isSlowZoomOut && !_isFOVquickZoom)
+        {
+            ResetCamera();
+            _SlowZoomVCAM.Priority = 9;
+        }
+
+        if (_isSlowZoomOut)
+        {
+            _SlowZoomOutVCAM.Priority = 11;
+            StartLoop();
+        }
+        else if (!_isSlowZoom && !_isFOVquickZoom)
+        {
+            ResetCamera();
+            _SlowZoomOutVCAM.Priority= 9;
+        }
+
+        if (_isFOVquickZoom)
+        {
+            _fovQuickZoomVCAM.Priority = 11;
+            StartLoop();
+        }
+        else if (!_isSlowZoom && !_isSlowZoomOut)
+        {
+            _fovQuickZoomVCAM.Priority = 9;
+            ResetCamera();
+        } 
     }
 
     public void CameraShake(float amplitude, float frequency)
@@ -69,38 +99,21 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void SlowZoom()
+    void StartLoop()
     {
-        TogglePriorty_VCAM(_isSlowZoom, _SlowZoomVCAM);
-    }
-
-    public void SlowZoomOut()
-    {
-        TogglePriorty_VCAM(_isSlowZoomOut, _SlowZoomOutVCAM);     
-    }
-
-    public void FOVQuickZoom()
-    {
-        TogglePriorty_VCAM(_isFOVquickZoom, _fovQuickZoomVCAM);
-    }
-
-    public void TogglePriorty_VCAM(bool isActive, CinemachineVirtualCamera vcam)
-    {
-
-        if (isActive == true)
+        if (loopStarted == false)
         {
-            vcam.Priority = 11;
-
-            if(loopStarted == false)
-            {
-                _cameraLoop = StartCoroutine(LoopCameraFX());
-            }    
+            StopAllCoroutines();
+            StartCoroutine(LoopCameraFX());
         }
-        else
-        {
-            vcam.Priority = 9;
-        }      
     }
+
+    void ResetCamera()
+    {
+        _originVCAM.Priority = 10;
+        loopStarted = false;
+    }
+
     IEnumerator LoopCameraFX()
     {
         loopStarted = true;
@@ -108,6 +121,7 @@ public class CameraController : MonoBehaviour
         _originVCAM.Priority = 12;
         yield return new WaitForSeconds(1);
         _originVCAM.Priority = 10;
-        loopStarted = false;  
+        loopStarted = false;
+     
     }
 }
