@@ -2057,7 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InGameMenu: {fileID: 2049123086}
   VotingPanel: {fileID: 1823839716}
-  GameTimer: 5
+  GameTimer: 60
   TimerLabel: {fileID: 671342938}
   Running: 1
 --- !u!4 &707259339
@@ -4066,7 +4066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2049123087
 Transform:
   m_ObjectHideFlags: 0
