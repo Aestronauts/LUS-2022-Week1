@@ -7,6 +7,7 @@ public class ChangeMusic : MonoBehaviour
     public AK.Wwise.Event auctionEvent;
     public AK.Wwise.Event dramaticEvent;
     public AK.Wwise.Event synthEvent;
+    public AK.Wwise.Event stopAllMusic;
 
     [SerializeField]
     public TMPro.TMP_Dropdown expDropdown;
