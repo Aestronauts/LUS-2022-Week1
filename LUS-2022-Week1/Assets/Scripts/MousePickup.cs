@@ -21,12 +21,16 @@ public class MousePickup : MonoBehaviour
     private Vector3 mOffset;
     private float mZCoord;
 
+    public bool resetObjectByDistance;
+
     private Vector3 startPos;
     private Quaternion startRot;
     public float maxDistanceAllowed;
 
     private float timeSinceLastCalled;
     private float delay = 3f;
+
+
 
     private void Awake()
     {
@@ -87,8 +91,9 @@ public class MousePickup : MonoBehaviour
 
         if (timeSinceLastCalled > delay)
         {
-            //call your function
-            CheckPosition();
+            if(resetObjectByDistance)           
+                CheckPosition();  //call reset position
+
             //reset timer
             timeSinceLastCalled = 0f;
         }

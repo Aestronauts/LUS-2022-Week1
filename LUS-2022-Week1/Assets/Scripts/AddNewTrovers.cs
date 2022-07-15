@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Please dont reuse this, its only to add Millie's character into the scene and set animations
+/// </summary>
+/// 
 
 public class AddNewTrovers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    //reference to character model prefab
+    public Animator animTrover2;
+    //reference to the slider
+    public Slider animSlider;
+    //a reference to the AfterImage script that makes the clone
+    public AfterImage scrpt_AfterImage;
+
+
+    public void SendAnimationChange()
     {
-        
+        animTrover2.SetInteger("posInt", (int)animSlider.value);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloneTrover()
     {
-        
+        scrpt_AfterImage.CreateAfterImage();
     }
-}
+
+
+}//end of add trovers
