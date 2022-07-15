@@ -1,10 +1,21 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-	[SerializeField] RawImage image;
+	[SerializeField] GameObject InGameMenu;
+	[SerializeField] GameObject VotingMenu;
+	[SerializeField] float GameTimer = 5f;
+
+	bool Running = true;
+
+	Texture2D MyScreenshotTexture;
+	Texture2D ReceivedScreenshotTexture;
+
+	Dictionary<Player, Texture2D> Screenshots;
 
     PhotonView view;
 	ScreenshotHelper screenshotHelper;
@@ -12,16 +23,31 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         view = PhotonView.Get(this);
 		screenshotHelper = GetComponent<ScreenshotHelper>();
+
+		Running = true;
+		VotingMenu.SetActive(false);
+		InGameMenu.SetActive(true);
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-			StartCoroutine(TakeScreenshot());
-        }
+		GameTimer -= Time.deltaTime;
 
-		//view.RPC("PlayForAll", RpcTarget.All);
-		//view.RPC("SetTimeForAll", RpcTarget.All, 0f);
+		if (GameTimer < 0f && Running)
+		{
+			Running = false;
+
+			if (view.IsMine)
+            {
+				StartCoroutine(TakeScreenshot());
+            }
+
+			if (PhotonNetwork.IsMasterClient)
+			{
+				view.RPC("EndPlay", RpcTarget.All);
+			}
+		}
+
+        //if (Input.GetKeyDown(KeyCode.Space)) { }
     }
 
     public IEnumerator TakeScreenshot()
@@ -33,30 +59,28 @@ public class GameManager : MonoBehaviour {
 			yield return null;
 		}
 
-		image.texture = screenshotHelper.screenshotTexture;
+		MyScreenshotTexture = screenshotHelper.screenshotTexture;
+        view.RPC("SendData", RpcTarget.AllBuffered, MyScreenshotTexture.EncodeToPNG(), PhotonNetwork.LocalPlayer);
 	}
 
-    public void InitializeAndPlay() {
-        if (PhotonNetwork.IsMasterClient) {
-		    view.RPC("SetTimeForAll", RpcTarget.All, 0);
-		    view.RPC("PlayForAll", RpcTarget.All);
-		}
+    public void EndPlay() {
+		InGameMenu.SetActive(false);
+		VotingMenu.SetActive(true);
 	}
 
-	public void PlayVideo() {
-		view.RPC("PlayForAll", RpcTarget.All);
-	}
-
-    public void PauseVideo() {
-		view.RPC("PauseForAll", RpcTarget.All);
-    }
-
-	#region NETWORKING
-    
 	[PunRPC]
-	void PlayForAll() {
-        // do stuff
-	}
+    void SendData(byte[] receivedByte, Player Other)
+    {
+		Texture2D NewTexture  = new Texture2D(1, 1);
+        NewTexture.LoadImage(receivedByte);
 
-	#endregion
+		if (Screenshots.ContainsKey(Other))
+		{
+			Screenshots[Other] = NewTexture;
+		}
+		else
+		{
+			Screenshots.Add(Other, NewTexture);
+		}
+    }
 }

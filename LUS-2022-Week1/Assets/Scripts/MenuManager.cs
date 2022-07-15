@@ -68,7 +68,7 @@ public class MenuManager : MonoBehaviourPunCallbacks {
 
 	[PunRPC]
 	void PlayForAll() {
-		SceneManager.LoadScene("Main");
+		SceneManager.LoadScene("MultiPlayerVersion");
 	}
 
 	void ReloadLobbyEntries()
