@@ -21,7 +21,7 @@ public class AddNewTrovers : MonoBehaviour
 
     public void SendAnimationChange()
     {
-        animTrover2.SetInteger("posInt", (int)animSlider.value);
+        animTrover2.SetInteger("poseInt", (int)animSlider.value);
     }
 
     public void CloneTrover()
