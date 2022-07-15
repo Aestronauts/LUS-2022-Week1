@@ -345,7 +345,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 334a8b32aed21b43bf5a24477c1115fb
     GuidInternal: 
-    m_lastTime: -8585437396705217546
+    m_lastTime: -8585437384663543160
     List:
     - name: New_SoundBank
       guid: e9bbb2f289966a4c92465df1cdacf903
@@ -424,8 +424,8 @@ MonoBehaviour:
         guid: 031c35fb9f6bcc4bab7430cba4d0d680
       Path: Events\Default Work Unit\Stop_All
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: SynthMuc_Play
       guid: bb03ea041ad7234eb255cbd1869be58b
       id: 3887398435
@@ -694,7 +694,7 @@ MonoBehaviour:
     m_lastTime: -8585440202901441965
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0600000007000000
+  ExpandedWaapiItemIds: 010000000600000007000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

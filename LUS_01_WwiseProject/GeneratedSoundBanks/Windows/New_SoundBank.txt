@@ -1,4 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
+	452547817	Stop_All			\Default Work Unit\Stop_All	
 	2227123394	AuctionMus_Play			\Default Work Unit\AuctionMus_Play	
 	2255144896	DramaticMus_Play			\Default Work Unit\DramaticMus_Play	
 	3887398435	SynthMuc_Play			\Default Work Unit\SynthMuc_Play	

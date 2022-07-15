@@ -12,7 +12,6 @@ public class ChangeMusic : MonoBehaviour
     [SerializeField]
     public TMPro.TMP_Dropdown expDropdown;
 
-    private int currentExp;
     private int previousExp;
 
     // Start is called before the first frame update
@@ -26,27 +25,44 @@ public class ChangeMusic : MonoBehaviour
     {
         currentExp = expDropdown.value;
 
-
         if (expDropdown.value == 0)
+        {
+            stopAllMusic.Post(gameObject);
+        }
+
+        if (expDropdown.value == 1 && previousExp != 1)
         {
             if (previousExp != -1)
             {
-                //
+                stopAllMusic.Post(gameObject);
             }
+            stopAllMusic.Post(gameObject);
             auctionEvent.Post(gameObject);
-            previousExp = 0;
-        }
-
-        if (expDropdown.value == 1)
-        {
-            dramaticEvent.Post(gameObject);
             previousExp = 1;
+            //isNewSelection = false;
+            
         }
 
-        if (expDropdown.value == 2)
+        if (expDropdown.value == 2 && previousExp != 2)
         {
-            synthEvent.Post(gameObject);
+            if (previousExp != -1)
+            {
+                stopAllMusic.Post(gameObject);
+            }
+            stopAllMusic.Post(gameObject);
+            dramaticEvent.Post(gameObject);
             previousExp = 2;
+        }
+
+        if (expDropdown.value == 3 && previousExp != 3)
+        {
+            if (previousExp != -1)
+            {
+                stopAllMusic.Post(gameObject);
+            }
+            stopAllMusic.Post(gameObject);
+            synthEvent.Post(gameObject);
+            previousExp = 3;
         }
     }
 }
