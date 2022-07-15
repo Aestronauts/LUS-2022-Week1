@@ -32,6 +32,8 @@ public class MenuManager : MonoBehaviourPunCallbacks {
 		LobbyMenu.SetActive(false);
 		ConnectingAlert.SetActive(true);
 		PhotonNetwork.ConnectUsingSettings();
+
+		PhotonNetwork.AutomaticallySyncScene = true;
 	}
 
 	public void JoinButton() {
@@ -68,7 +70,7 @@ public class MenuManager : MonoBehaviourPunCallbacks {
 
 	[PunRPC]
 	void PlayForAll() {
-		SceneManager.LoadScene("MultiPlayerVersion");
+		if (PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel("MultiPlayerVersion");
 	}
 
 	void ReloadLobbyEntries()

@@ -9,12 +9,12 @@ using TMPro;
 public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject InGameMenu;
 	[SerializeField] GameObject VotingPanel;
-	[SerializeField] float GameTimer = 5f;
+	[SerializeField] float GameTimer = 60f;
 	[SerializeField] TextMeshProUGUI TimerLabel;
 
 	public static GameManager Instance;
 
-	bool Running = true;
+	public bool Running = true;
 
 	Texture2D MyScreenshotTexture;
 	Texture2D ReceivedScreenshotTexture;
@@ -40,20 +40,20 @@ public class GameManager : MonoBehaviour {
 
 		if (Running)
 		{
-			TimerLabel.text = "Time: " + GameTimer.ToString("F2");
+			TimerLabel.text = GameTimer.ToString("F2");
 		}
 		else
 		{
-			TimerLabel.text = "Time: 0.00";
+			TimerLabel.text = "0.00";
 		}
 
 		if (GameTimer < 0f && Running)
 		{
 			Running = false;
 
+			StartCoroutine(TakeScreenshot());
 			if (view.IsMine)
             {
-				StartCoroutine(TakeScreenshot());
             }
 
 			if (PhotonNetwork.IsMasterClient)
@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour {
 				view.RPC("EndPlay", RpcTarget.All);
 			}
 		}
-
-        //if (Input.GetKeyDown(KeyCode.Space)) { }
     }
 
     public IEnumerator TakeScreenshot()
@@ -74,10 +72,13 @@ public class GameManager : MonoBehaviour {
 			yield return null;
 		}
 
+
 		MyScreenshotTexture = screenshotHelper.screenshotTexture;
-        view.RPC("SendData", RpcTarget.AllBuffered, MyScreenshotTexture.EncodeToPNG(), PhotonNetwork.LocalPlayer);
+		print(MyScreenshotTexture.EncodeToPNG().Length);
+        view.RPC("SendData", RpcTarget.All, MyScreenshotTexture.EncodeToPNG(), PhotonNetwork.LocalPlayer);
 	}
 
+	[PunRPC]
     public void EndPlay() {
 		InGameMenu.SetActive(false);
 		VotingPanel.SetActive(true);
@@ -87,6 +88,8 @@ public class GameManager : MonoBehaviour {
 	[PunRPC]
     void SendData(byte[] receivedByte, Player Other)
     {
+		print(Other.NickName);
+
 		Texture2D NewTexture  = new Texture2D(1, 1);
         NewTexture.LoadImage(receivedByte);
 
