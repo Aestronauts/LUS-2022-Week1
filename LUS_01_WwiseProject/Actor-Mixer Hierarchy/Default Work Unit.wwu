@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{3455E5BE-0F11-4080-8F86-093A580A86DD}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{3455E5BE-0F11-4080-8F86-093A580A86DD}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{3455E5BE-0F11-4080-8F86-093A580A86DD}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Auction_Music" ID="{0628DA97-B2AE-43F3-A2F2-CDEB35C4FB5A}" ShortID="301507047">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC1400BA-D551-405A-A6C5-D0C3ADCC2C60}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5F03BCD9-21ED-4F23-A4AC-20E83AB7E2C9}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="LevelUpState_1_Auction_M-St" ID="{19C64227-9FDA-47EE-B004-338DE88E8607}">
+							<Language>SFX</Language>
+							<AudioFile>LevelUpState_1_Auction_M-St.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="292953494"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="LevelUpState_1_Auction_M-St" ID="{19C64227-9FDA-47EE-B004-338DE88E8607}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

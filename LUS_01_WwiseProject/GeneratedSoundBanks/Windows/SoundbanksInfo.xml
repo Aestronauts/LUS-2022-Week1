@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\Game Projects\Aestronauts\Jams\LUS-2022-Week1\LUS_01_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="1958929096">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="4072029455" Language="SFX" Hash="1976663978">
+			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
+			<ShortName>New_SoundBank</ShortName>
+			<Path>New_SoundBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2227123394" Name="AuctionMus_Play" ObjectPath="\Events\Default Work Unit\AuctionMus_Play" DurationType="OneShot" DurationMin="18.752062" DurationMax="18.752062">
+					<IncludedMemoryFiles>
+						<File Id="292953494" Language="SFX">
+							<ShortName>LevelUpState_1_Auction_M-St.wav</ShortName>
+							<Path>SFX\LevelUpState_1_Auction_M-St_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
