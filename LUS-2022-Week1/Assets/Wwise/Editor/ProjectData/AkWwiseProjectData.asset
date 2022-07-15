@@ -345,8 +345,22 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 334a8b32aed21b43bf5a24477c1115fb
     GuidInternal: 
-    m_lastTime: -8585439260926195244
-    List: []
+    m_lastTime: -8585437431169123322
+    List:
+    - name: New_SoundBank
+      guid: e9bbb2f289966a4c92465df1cdacf903
+      id: 4072029455
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 334a8b32aed21b43bf5a24477c1115fb
+      - ElementName: New_SoundBank
+        ObjectType: 7
+        guid: e9bbb2f289966a4c92465df1cdacf903
+      Path: SoundBanks\Default Work Unit\New_SoundBank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -359,8 +373,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 615d067015216143b3f18ca02f006ba0
     GuidInternal: 
-    m_lastTime: -8585439260926939266
-    List: []
+    m_lastTime: -8585437431168683420
+    List:
+    - name: AuctionMus_Play
+      guid: 43509f22476c944cab66bb598f261dd1
+      id: 2227123394
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 615d067015216143b3f18ca02f006ba0
+      - ElementName: AuctionMus_Play
+        ObjectType: 3
+        guid: 43509f22476c944cab66bb598f261dd1
+      Path: Events\Default Work Unit\AuctionMus_Play
+      maxAttenuation: 0
+      maxDuration: 18.752062
+      minDuration: 18.752062
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -612,7 +643,7 @@ MonoBehaviour:
     m_lastTime: -8585439260926185279
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 06000000070000000b0000000c000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
