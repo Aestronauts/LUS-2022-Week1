@@ -3439,6 +3439,14 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: T-Pose
       m_Image: {fileID: 0}
+    - m_Text: Sitting
+      m_Image: {fileID: 0}
+    - m_Text: Jumping
+      m_Image: {fileID: 0}
+    - m_Text: Thinking
+      m_Image: {fileID: 0}
+    - m_Text: Sleeping
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

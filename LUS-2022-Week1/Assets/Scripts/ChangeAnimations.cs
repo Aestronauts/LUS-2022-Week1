@@ -46,6 +46,30 @@ public class ChangeAnimations : MonoBehaviour
 
         }
 
+        if (animDropdown.value == 4)
+        {
+            animator.Play("sitting");
+
+        }
+
+        if (animDropdown.value == 5)
+        {
+            animator.Play("jump");
+
+        }
+
+        if (animDropdown.value == 6)
+        {
+            animator.Play("thinking");
+
+        }
+
+        if (animDropdown.value == 7)
+        {
+            animator.Play("sleeping");
+
+        }
+
 
     }
 }
