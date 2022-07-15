@@ -12,6 +12,7 @@ public class ChangeMusic : MonoBehaviour
     [SerializeField]
     public TMPro.TMP_Dropdown expDropdown;
 
+    private int currentExp;
     private int previousExp;
 
     // Start is called before the first frame update
