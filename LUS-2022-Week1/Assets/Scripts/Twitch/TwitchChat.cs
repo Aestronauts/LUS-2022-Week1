@@ -14,7 +14,13 @@ public class TwitchChat : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
     private float reconnectTimer;
-    private float reconnectAfter = 60.0f;
+    private float reconnectAfter = 3.0f;
+
+    [SerializeField] bool Connected = false;
+
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start() {
         Connect();
@@ -24,6 +30,12 @@ public class TwitchChat : MonoBehaviour
         if (twitchClient.Available == 0)
         {
             reconnectTimer += Time.deltaTime; 
+            Connected = false;
+        }
+        else 
+        {
+            Connected = true;
+
         }
 
         if (twitchClient.Available == 0 && reconnectTimer >= reconnectAfter)
@@ -47,7 +59,7 @@ public class TwitchChat : MonoBehaviour
         writer.Flush();
     }
 
-    public void ReadChat()
+    public ChatMessage ReadChat() // 1
     {
         if (twitchClient.Available > 0)
         {
@@ -55,8 +67,21 @@ public class TwitchChat : MonoBehaviour
 
             if (message.Contains("PRIVMSG"))
             {
-                print(message); 
+                // Get the username
+                int splitPoint = message.IndexOf("!", 1); // 2
+                string chatName = message.Substring(0, splitPoint); 
+                chatName = chatName.Substring(1);
+
+                //Get the message
+                splitPoint = message.IndexOf(":", 1); 
+                message = message.Substring(splitPoint + 1);
+                ChatMessage chatMessage = new ChatMessage(); // 3
+                chatMessage.user = chatName;
+                chatMessage.message = message.ToLower();
+                return chatMessage;
             }
+
         }
+        return null; // 4
     }
 }
