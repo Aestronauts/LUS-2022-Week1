@@ -13,6 +13,7 @@ public class ChangeExpressions : MonoBehaviour
     public TMPro.TMP_Dropdown expDropdown;
 
     private int currentExp;
+    private int previousExp;
 
 
 
@@ -33,7 +34,7 @@ public class ChangeExpressions : MonoBehaviour
         {
             face.SetBlendShapeWeight(0, 100);
             body.SetBlendShapeWeight(0, 100);
-            currentExp = 0;
+            previousExp = 0;
 
         }
 
@@ -41,28 +42,28 @@ public class ChangeExpressions : MonoBehaviour
         {
             face.SetBlendShapeWeight(1, 100);
             body.SetBlendShapeWeight(1, 100);
-            currentExp = 1;
+            previousExp = 1;
         }
 
         if (expDropdown.value == 2)
         {
             face.SetBlendShapeWeight(2, 100);
             body.SetBlendShapeWeight(2, 100);
-            currentExp = 2;
+            previousExp = 2;
         }
 
         if (expDropdown.value == 3)
         {
             face.SetBlendShapeWeight(3, 100);
             body.SetBlendShapeWeight(3, 100);
-            currentExp = 3;
+            previousExp = 3;
         }
 
         if (expDropdown.value == 4)
         {
             face.SetBlendShapeWeight(4, 100);
             body.SetBlendShapeWeight(4, 100);
-            currentExp = 4;
+            previousExp = 4;
 
         }
 
