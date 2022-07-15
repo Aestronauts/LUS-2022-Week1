@@ -6,7 +6,6 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static CameraController Instance { get; private set; }
 
     private CinemachineVirtualCamera _originVCAM;
     private CinemachineVirtualCamera _SlowZoomVCAM;
@@ -15,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     CinemachineBasicMultiChannelPerlin _vcamNoise;
 
-    Coroutine _cameraLoop;
+    
 
     [SerializeField]
     bool _isCameraShake, _isSlowZoom, _isSlowZoomOut, _isFOVquickZoom;
@@ -23,7 +22,6 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
 
         List<Transform> childObjects = new List<Transform>();
         for (int i = 0; i < transform.childCount; i++)

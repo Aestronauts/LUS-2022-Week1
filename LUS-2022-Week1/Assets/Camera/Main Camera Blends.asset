@@ -57,7 +57,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: 03_FOVQuickZoom
+  - m_From: 02_SlowZoomOut
     m_To: 00_Origin
     m_Blend:
       m_Style: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: 02_SlowZoomOut
+  - m_From: 03_FOVQuickZoom
     m_To: 00_Origin
     m_Blend:
       m_Style: 0
